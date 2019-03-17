@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 常用指令测试</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in list" :key="index"
+            v-if="index % 2 == 0"
+        >
+            {{index}} -- {{item}}
+        </li>
+        <li v-for="(value,key) in user">
+            {{key}} -- {{value}}
+        </li>
+        <li v-for="(item,index) in userList" :key="item.user.name">
+            <div v-if="item.user.name == 'Macro'" style="background: #d43f3a">
+                {{index}} -- {{item.user.name}} -- {{item.user.age}}
+            </div>
+            <div v-else>
+                {{index}} -- {{item.user.name}} -- {{item.user.age}}
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+<script src="vue.min.js"></script>
+<script>
+    var VM = new Vue({
+        el:"#app",
+        data:{
+            list:[1,2,3,4],
+            user:{
+                name:"Macro",
+                age:18
+            },
+            userList:[
+                {
+                    user:{
+                        name:"Macro",
+                        age:18
+                    }
+                },{
+                    user:{
+                        name:"Nano",
+                        age:28
+                    }
+                }
+            ]
+        }
+    });
+</script>
+</html>
